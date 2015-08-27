@@ -8,23 +8,35 @@
         if (canvas.getContext) {
           var ctx = canvas.getContext("2d");
 
-          var happy_face = new Path2D();
-          happy_face.rect(10,10,100,100);
-          ctx.fillStyle = "rgb(0,0,200)";
-          ctx.fill(happy_face);
-
-          happy_face.moveTo(50,50);
-          happy_face.lineTo(90,90);
-          happy_face.lineTo(90,50);
+          var face = new Path2D();
+          face.rect(0,0,30,30);
 
           ctx.fillStyle = "rgb(200,0,0)";
-          ctx.fill(happy_face);
+          ctx.fill(face);
 
-          ctx.save();
-          ctx.translate(50,50);
-          ctx.fillStyle="rgb(0,200,0)";
-          ctx.fill(happy_face);
-          ctx.restore();
+          // Making the Happy Expression
+          var happy_expr = new Path2D();
+          happy_expr.moveTo(3,11);
+          happy_expr.lineTo(7,3);
+          ctx.stroke(happy_expr);
+          happy_expr.lineTo(11,11);
+          ctx.stroke(happy_expr);
+
+//          ctx.fillStyle = "rgb(0,0,200)";
+//          ctx.fill(happy_face);
+//
+//          happy_face.moveTo(50,50);
+//          happy_face.lineTo(90,90);
+//          happy_face.lineTo(90,50);
+//
+//          ctx.fillStyle = "rgb(200,0,0)";
+//          ctx.fill(happy_face);
+//
+//          ctx.save();
+//          ctx.translate(50,50);
+//          ctx.fillStyle="rgb(0,200,0)";
+//          ctx.fill(happy_face);
+//          ctx.restore();
         }
       }
     </script>
