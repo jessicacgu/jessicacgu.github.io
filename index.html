@@ -8,11 +8,23 @@
         if (canvas.getContext) {
           var ctx = canvas.getContext("2d");
 
-          var face = new Path2D();
-          face.rect(10,10,100,100);
+          var happy_face = new Path2D();
+          happy_face.rect(10,10,100,100);
+          ctx.fillStyle = "rgb(0,0,200)";
+          ctx.fill(happy_face);
+
+          happy_face.moveTo(50,50);
+          happy_face.lineTo(90,90);
+          happy_face.lineTo(90,50);
 
           ctx.fillStyle = "rgb(200,0,0)";
-          ctx.fill(face);
+          ctx.fill(happy_face);
+
+          ctx.save();
+          ctx.translate(50,50);
+          ctx.fillStyle="rgb(0,200,0)";
+          ctx.fill(happy_face);
+          ctx.restore();
         }
       }
     </script>
