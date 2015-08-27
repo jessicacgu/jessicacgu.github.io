@@ -14,27 +14,38 @@
           ctx.fillStyle = "rgb(200,0,0)";
           ctx.fill(face);
 
-          // Making the Happy Expression
-          var happy_expr = new Path2D();
+//          // Making the Happy Expression
+//          var happy_expr = new Path2D();
+//
+//          // Making the left eye (as a carrot shape)
+//          happy_expr.moveTo(4,13);
+//          happy_expr.lineTo(8,5);
+//          ctx.stroke(happy_expr);
+//          happy_expr.lineTo(12,13);
+//          ctx.stroke(happy_expr);
+//
+//          // Making the right eye (as a carrot shape)
+//          happy_expr.moveTo(18,13);
+//          happy_expr.lineTo(22,5);
+//          ctx.stroke(happy_expr);
+//          happy_expr.lineTo(26,13);
+//          ctx.stroke(happy_expr);
+//
+//          // Making the mouth (a thin line)
+//          happy_expr.moveTo(8,22);
+//          happy_expr.lineTo(22,22);
+//          ctx.stroke(happy_expr);
 
-          // Making the left eye (as a carrot shape)
-          happy_expr.moveTo(4,13);
-          happy_expr.lineTo(8,5);
-          ctx.stroke(happy_expr);
-          happy_expr.lineTo(12,13);
-          ctx.stroke(happy_expr);
+          // Making the Excited Expression
+          var excited_expr = new Path2D();
 
-          // Making the right eye (as a carrot shape)
-          happy_expr.moveTo(18,13);
-          happy_expr.lineTo(22,5);
-          ctx.stroke(happy_expr);
-          happy_expr.lineTo(26,13);
-          ctx.stroke(happy_expr);
+          // Making the left eye (90 deg clockwise carrot)
+          excited_expr.moveTo(3,5);
+          excited_expr.lineTo(11,9);
+          excited_expr.lineTo(3,13);
+          ctx.stroke(excited_expr);
 
-          // Making the mouth (a thin line)
-          happy_expr.moveTo(8,22);
-          happy_expr.lineTo(22,22);
-          ctx.stroke(happy_expr);
+
 
 
 //          ctx.fillStyle = "rgb(0,0,200)";
