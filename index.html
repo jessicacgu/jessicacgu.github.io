@@ -7,10 +7,12 @@
         var canvas = document.getElementById("faces_bkgd");
         canvas.width = document.documentElement.clientWidth;
         canvas.height = document.documentElement.clientHeight;
-        canvas.opacity = .5
 
         if (canvas.getContext) {
           var ctx = canvas.getContext("2d");
+
+          ctx.fillStyle = "rgb(244,191,175)";
+          ctx.fillRect(0,0,canvas.width,canvas.height);
 
           var face = new Path2D();
           face.rect(0,0,30,30);
@@ -53,9 +55,9 @@
           excited_expr.lineTo(23,17);
 
 
-          var colors = ["rgb(229,130,150)", "rgb(243,203,116)",
-          "rgb(234,226,141)", "rgb(234,226,141)", "rgb(235,217,179)",
-          "rgb(201,220,174)"];
+          var colors = ["rgb(211,210,164)", "rgb(198,223,194)",
+          "rgb(217,194,152)"];
+
           var exprs = [happy_expr, excited_expr];
           var faces_color = [];
           var faces_expr = [];
@@ -67,8 +69,15 @@
           function draw_face(x, y, color, face, expr) {
               ctx.save();
               ctx.translate(x, y);
+
               ctx.fillStyle = color
               ctx.fill(face);
+
+              ctx.lineWidth = 3;
+              ctx.strokeStyle = "rgb(176,144,132)";
+              ctx.strokeRect(0,0,30,30);
+
+              ctx.lineWidth = 1;
               ctx.stroke(expr);
               ctx.restore();
           }
