@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <script type="application/javascript">
+      // Draws faces onto all of the canvas. Puts 10px distance between each
+      // face
       function draw_faces() {
         var canvas = document.getElementById("faces_bkgd");
         canvas.width = document.documentElement.clientWidth;
@@ -114,11 +116,14 @@
             }
           }
 
-          function fill_bkgd_with_faces() {
-            var face_num = 0
+          // Changes the expressions of a few random faces at a time
+          function change_facial_expr() {
+            var face_num = 0;
+            // Chooses a random face to change
             var blink = Math.floor(Math.random() * faces_color.length);
             for (var i = 0; i < num_width; i += 1) {
               for (var j = 0; j < num_height ; j += 1) {
+                // Determines if the face is to be changed
                 if (face_num == blink) {
                   faces_expr[face_num] = (faces_expr[face_num]+1)%exprs.length
                 }
@@ -131,7 +136,7 @@
             }
           }
 
-          window.setInterval(fill_bkgd_with_faces, 1000);
+          window.setInterval(change_facial_expr, 1000);
         }
       }
     </script>
