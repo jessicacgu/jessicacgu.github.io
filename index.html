@@ -85,15 +85,21 @@
 
               // Drawing the shape of the face
               ctx.fillStyle = color
+              ctx.shadowBlur = 5;
+              ctx.shadowColor = color;
               ctx.fill(shape);
 
               // Giving the face a border
               ctx.lineWidth = 3;
-              ctx.strokeStyle = "rgb(176,144,132)";
+              ctx.shadowBlur = 100;
+              ctx.shadowColor = "rgba(176,144,132,0.3)";
+              ctx.strokeStyle = "rgba(176,144,132,0.3)";
               ctx.strokeRect(0,0,30,30);
 
               // Drawing the expression
               ctx.lineWidth = 1;
+              ctx.shadowBlur = 5;
+              ctx.shadowColor = "rgb(176,144,132)";
               ctx.stroke(expr);
               ctx.restore();
           }
