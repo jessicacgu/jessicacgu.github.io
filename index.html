@@ -7,6 +7,7 @@
         var canvas = document.getElementById("faces_bkgd");
         canvas.width = document.documentElement.clientWidth;
         canvas.height = document.documentElement.clientHeight;
+        canvas.opacity = .5
 
         if (canvas.getContext) {
           var ctx = canvas.getContext("2d");
@@ -62,6 +63,16 @@
           ctx.scale(2, 2);
           var num_width = canvas.width/70;
           var num_height = canvas.height/70;
+
+          function draw_face(x, y, color, face, expr) {
+              ctx.save();
+              ctx.translate(x, y);
+              ctx.fillStyle = color
+              ctx.fill(face);
+              ctx.stroke(expr);
+              ctx.restore();
+          }
+
           // Setting up the colors and initial expressions for each face
           for (var i = 0; i < num_width ; i += 1) {
             for (var j = 0; j < num_height ; j += 1) {
@@ -71,12 +82,7 @@
               var e = Math.floor(Math.random()*100)%exprs.length;
 
               // Draw the initial face on the canvas
-              ctx.save();
-              ctx.translate(i*40, j*40);
-              ctx.fillStyle = colors[c];
-              ctx.fill(face);
-              ctx.stroke(exprs[e]);
-              ctx.restore();
+              draw_face(i*40,j*40, colors[c], face, exprs[e]);
 
               // Keeps track of each faces's color and expression
               faces_color.push(c);
@@ -90,15 +96,13 @@
             var blink = Math.floor(Math.random() * faces_color.length);
             for (var i = 0; i < num_width; i += 1) {
               for (var j = 0; j < num_height ; j += 1) {
-                ctx.save();
-                ctx.translate(i*40, j*40);
-                ctx.fillStyle = colors[faces_color[face_num]];
-                ctx.fill(face);
                 if (face_num == blink) {
                   faces_expr[face_num] = (faces_expr[face_num]+1)%exprs.length
                 }
-                ctx.stroke(exprs[faces_expr[face_num]]);
-                ctx.restore();
+
+                draw_face(i*40, j*40, colors[faces_color[face_num]], face,
+                    exprs[faces_expr[face_num]]);
+
                 face_num += 1;
               }
             }
