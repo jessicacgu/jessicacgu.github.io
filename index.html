@@ -11,11 +11,13 @@
         if (canvas.getContext) {
           var ctx = canvas.getContext("2d");
 
+          // Setting a background color
           ctx.fillStyle = "rgb(244,191,175)";
           ctx.fillRect(0,0,canvas.width,canvas.height);
 
-          var face = new Path2D();
-          face.rect(0,0,30,30);
+          // Creating the shape of the face
+          var shape = new Path2D();
+          shape.rect(0,0,30,30);
 
           // Making the Happy Expression
           var happy_expr = new Path2D();
@@ -55,28 +57,40 @@
           excited_expr.lineTo(23,17);
 
 
+          // Colors for the faces. Along with the background creates a palette
+          // that was taken from
+          // http://www.colourlovers.com/palette/1959912/L_i_n_d_a
           var colors = ["rgb(211,210,164)", "rgb(198,223,194)",
           "rgb(217,194,152)"];
-
+          // Expressions for the faces
           var exprs = [happy_expr, excited_expr];
+          // Keeps track of the colors for each face drawn onto the canvas
           var faces_color = [];
+          // Keeps track of the expressions for each face drawn onto the
+          // canvas
           var faces_expr = [];
 
+          // Scaling the faces by 2x. Adjusting for new number of faces on
+          // canvas
           ctx.scale(2, 2);
           var num_width = canvas.width/70;
           var num_height = canvas.height/70;
 
-          function draw_face(x, y, color, face, expr) {
+          // Does actual drawing of  face onto the canvas
+          function draw_face(x, y, color, shape, expr) {
               ctx.save();
               ctx.translate(x, y);
 
+              // Drawing the shape of the face
               ctx.fillStyle = color
-              ctx.fill(face);
+              ctx.fill(shape);
 
+              // Giving the face a border
               ctx.lineWidth = 3;
               ctx.strokeStyle = "rgb(176,144,132)";
               ctx.strokeRect(0,0,30,30);
 
+              // Drawing the expression
               ctx.lineWidth = 1;
               ctx.stroke(expr);
               ctx.restore();
@@ -91,7 +105,7 @@
               var e = Math.floor(Math.random()*100)%exprs.length;
 
               // Draw the initial face on the canvas
-              draw_face(i*40,j*40, colors[c], face, exprs[e]);
+              draw_face(i*40,j*40, colors[c], shape, exprs[e]);
 
               // Keeps track of each faces's color and expression
               faces_color.push(c);
@@ -109,7 +123,7 @@
                   faces_expr[face_num] = (faces_expr[face_num]+1)%exprs.length
                 }
 
-                draw_face(i*40, j*40, colors[faces_color[face_num]], face,
+                draw_face(i*40, j*40, colors[faces_color[face_num]], shape,
                     exprs[faces_expr[face_num]]);
 
                 face_num += 1;
