@@ -52,36 +52,54 @@
           excited_expr.lineTo(23,17);
 
 
-          var colors = ["rgb(400,0,0)", "rgb(0,400,0)", "rgb(0,0,400)"]
-          var face_color = []
-          var face_expr = []
+          var colors = ["rgb(229,130,150)", "rgb(243,203,116)",
+          "rgb(234,226,141)", "rgb(234,226,141)", "rgb(235,217,179)",
+          "rgb(201,220,174)"];
+          var exprs = [happy_expr, excited_expr];
+          var faces_color = [];
+          var faces_expr = [];
 
+          ctx.scale(2, 2);
+          var num_width = canvas.width/70;
+          var num_height = canvas.height/70;
           // Setting up the colors and initial expressions for each face
-          for (var i = 0; i < canvas.width; i += 40) {
-            for (var j = 0; j < canvas.width; j += 40) {
+          for (var i = 0; i < num_width ; i += 1) {
+            for (var j = 0; j < num_height ; j += 1) {
               // Math.floor(Math.random()*100) chooses a random number from an
               // even distribution of the integers[0,100)
+              var c = Math.floor(Math.random()*100)%colors.length;
+              var e = Math.floor(Math.random()*100)%exprs.length;
+
+              // Draw the initial face on the canvas
+              ctx.save();
+              ctx.translate(i*40, j*40);
+              ctx.fillStyle = colors[c];
+              ctx.fill(face);
+              ctx.stroke(exprs[e]);
+              ctx.restore();
 
               // Keeps track of each faces's color and expression
-              face_color.push(Math.floor(Math.random()*100)%colors.length);
-              face_expr.push(Math.floor(Math.random()*100)%2);
+              faces_color.push(c);
+              faces_expr.push(e);
+
             }
           }
 
-
-
           function fill_bkgd_with_faces() {
-            for (var i = 0; i < canvas.width; i += 40) {
-              for (var j = 0; j < canvas.height; j += 40) {
+            var face_num = 0
+            var blink = Math.floor(Math.random() * faces_color.length);
+            for (var i = 0; i < num_width; i += 1) {
+              for (var j = 0; j < num_height ; j += 1) {
                 ctx.save();
-                ctx.translate(i, j);
+                ctx.translate(i*40, j*40);
+                ctx.fillStyle = colors[faces_color[face_num]];
                 ctx.fill(face);
-                if (Math.random() < 0.5) {
-                  ctx.stroke(happy_expr);
-                } else {
-                  ctx.stroke(excited_expr);
+                if (face_num == blink) {
+                  faces_expr[face_num] = (faces_expr[face_num]+1)%exprs.length
                 }
+                ctx.stroke(exprs[faces_expr[face_num]]);
                 ctx.restore();
+                face_num += 1;
               }
             }
           }
