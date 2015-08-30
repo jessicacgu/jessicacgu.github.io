@@ -14,7 +14,7 @@
           var ctx = canvas.getContext("2d");
 
           // Setting a background color
-          ctx.fillStyle = "rgb(244,191,175)";
+          ctx.fillStyle = "rgb(229, 228, 240)";
           ctx.fillRect(0,0,canvas.width,canvas.height);
 
           // Creating the shape of the face
@@ -62,8 +62,8 @@
           // Colors for the faces. Along with the background creates a palette
           // that was taken from
           // http://www.colourlovers.com/palette/1959912/L_i_n_d_a
-          var colors = ["rgb(211,210,164)", "rgb(198,223,194)",
-          "rgb(217,194,152)"];
+          var colors = ["rgb(250, 246, 230)", "rgb(242, 208, 212)",
+          "rgb(166,208,224)"];
           // Expressions for the faces
           var exprs = [happy_expr, excited_expr];
           // Keeps track of the colors for each face drawn onto the canvas
@@ -92,14 +92,14 @@
               // Giving the face a border
               ctx.lineWidth = 3;
               ctx.shadowBlur = 100;
-              ctx.shadowColor = "rgba(176,144,132,0.3)";
-              ctx.strokeStyle = "rgba(176,144,132,0.3)";
+              //ctx.shadowColor = "rgba(98,169,199,0.3)";
+              ctx.strokeStyle = "rgba(98,169,199,0.3)";
               ctx.strokeRect(0,0,30,30);
 
               // Drawing the expression
               ctx.lineWidth = 1;
               ctx.shadowBlur = 5;
-              ctx.shadowColor = "rgb(176,144,132)";
+              ctx.shadowColor = "rgba(98,169,199,0.3)";
               ctx.stroke(expr);
               ctx.restore();
           }
