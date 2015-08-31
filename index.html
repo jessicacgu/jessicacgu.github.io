@@ -14,7 +14,7 @@
           var ctx = canvas.getContext("2d");
 
           // Setting a background color
-          ctx.fillStyle = "rgb(242, 238, 220)";
+          ctx.fillStyle = "rgb(230, 234, 242)";
           ctx.fillRect(0,0,canvas.width,canvas.height);
 
           // Creating the shape of the face
@@ -75,8 +75,8 @@
           // Scaling the faces by 2x. Adjusting for new number of faces on
           // canvas
           ctx.scale(2, 2);
-          var num_width = canvas.width/70;
-          var num_height = canvas.height/70;
+          var num_width = Math.floor(canvas.width/80);
+          var num_height = Math.floor(canvas.height/80);
 
           // Does actual drawing of  face onto the canvas
           function draw_face(x, y, color, shape, expr) {
@@ -99,8 +99,8 @@
               // Drawing the expression
               ctx.lineWidth = 1;
               ctx.shadowBlur = 10;
-              ctx.shadowColor = "rgba(245, 146, 93,0.3)";
-              ctx.stroke(expr);
+              ctx.shadowColor = "rgba(245, 146, 93,0.8)";
+//              ctx.stroke(expr);
               ctx.restore();
           }
 
@@ -126,16 +126,30 @@
           function change_facial_expr() {
             var face_num = 0;
             // Chooses a random face to change
-            var blink = Math.floor(Math.random() * faces_color.length);
+            var blink = [Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length,
+              Math.floor(Math.random() * 100000)%faces_color.length];
             for (var i = 0; i < num_width; i += 1) {
               for (var j = 0; j < num_height ; j += 1) {
                 // Determines if the face is to be changed
-                if (face_num == blink) {
+                if (face_num in blink) {
                   faces_expr[face_num] = (faces_expr[face_num]+1)%exprs.length
+                  faces_color[face_num] = (faces_color[face_num]+1)%colors.length
                   draw_face(i*40, j*40, colors[faces_color[face_num]], shape,
                       exprs[faces_expr[face_num]]);
                 }
-
 
                 face_num += 1;
               }
