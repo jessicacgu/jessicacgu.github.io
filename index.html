@@ -13,6 +13,7 @@
         if (canvas.getContext) {
           var ctx = canvas.getContext("2d");
 
+          // TO DO: Get Rid of Expressions. No Longer Having Them
           // Setting a background color
           ctx.fillStyle = "rgb(230, 234, 242)";
           ctx.fillRect(0,0,canvas.width,canvas.height);
@@ -133,7 +134,7 @@
             for (var i = 0; i < num_width; i += 1) {
               for (var j = 0; j < num_height ; j += 1) {
                 // Determines if the face is to be changed
-                if (face_num  % 10 ==  blink % 10) {
+                if (face_num  % num_width ==  blink % num_width) {
 //                  faces_expr[face_num] = (faces_expr[face_num]+1)%exprs.length
                   faces_color[face_num] = (faces_color[face_num]+1)%colors.length
                 draw_face(i*40, j*40, colors[faces_color[face_num]], shape,
