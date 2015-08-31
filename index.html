@@ -126,30 +126,16 @@
           function change_facial_expr() {
             var face_num = 0;
             // Chooses a random face to change
-            var blink = [Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length,
-              Math.floor(Math.random() * 100000)%faces_color.length];
+            var blink = Math.floor(Math.random() * 100000)%faces_color.length
             for (var i = 0; i < num_width; i += 1) {
               for (var j = 0; j < num_height ; j += 1) {
                 // Determines if the face is to be changed
-                if (face_num in blink) {
+                if (face_num  % 10 ==  blink % 10) {
                   faces_expr[face_num] = (faces_expr[face_num]+1)%exprs.length
                   faces_color[face_num] = (faces_color[face_num]+1)%colors.length
-                  draw_face(i*40, j*40, colors[faces_color[face_num]], shape,
-                      exprs[faces_expr[face_num]]);
                 }
+                draw_face(i*40, j*40, colors[faces_color[face_num]], shape,
+                    exprs[faces_expr[face_num]]);
 
                 face_num += 1;
               }
