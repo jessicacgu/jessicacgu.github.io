@@ -94,7 +94,7 @@
               ctx.shadowBlur = 100;
               ctx.shadowColor = "rgba(245, 146, 93,0.1)";
               ctx.strokeStyle = ctx.shadowColor;
-              ctx.strokeRect(0,0,30,30);
+//              ctx.strokeRect(0,0,30,30);
 
               // Drawing the expression
               ctx.lineWidth = 1;
@@ -131,15 +131,16 @@
               for (var j = 0; j < num_height ; j += 1) {
                 // Determines if the face is to be changed
                 if (face_num  % 10 ==  blink % 10) {
-                  faces_expr[face_num] = (faces_expr[face_num]+1)%exprs.length
+//                  faces_expr[face_num] = (faces_expr[face_num]+1)%exprs.length
                   faces_color[face_num] = (faces_color[face_num]+1)%colors.length
-                }
                 draw_face(i*40, j*40, colors[faces_color[face_num]], shape,
                     exprs[faces_expr[face_num]]);
+                }
 
                 face_num += 1;
               }
             }
+
           }
 
           window.setInterval(change_facial_expr, 1000);
