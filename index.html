@@ -120,6 +120,9 @@
               faces_expr.push(e);
 
             }
+            ctx.fillStyle = "rgb(88, 131, 163)";
+            ctx.font = "16px Arial";
+            ctx.fillText("Website Under Reconstruction", 100, 100);
           }
 
           // Changes the expressions of a few random faces at a time
@@ -136,6 +139,10 @@
                 draw_face(i*40, j*40, colors[faces_color[face_num]], shape,
                     exprs[faces_expr[face_num]]);
                 }
+
+                ctx.fillStyle = "rgb(88, 131, 163)";
+                ctx.font = "16px Arial";
+                ctx.fillText("Website Under Reconstruction", 100, 100);
 
                 face_num += 1;
               }
