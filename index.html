@@ -14,7 +14,7 @@
           var ctx = canvas.getContext("2d");
 
           // Setting a background color
-          ctx.fillStyle = "rgb(245, 245, 237)";
+          ctx.fillStyle = "rgb(242, 238, 220)";
           ctx.fillRect(0,0,canvas.width,canvas.height);
 
           // Creating the shape of the face
@@ -62,8 +62,8 @@
           // Colors for the faces. Along with the background creates a palette
           // that was taken from
           // http://www.colourlovers.com/palette/1959912/L_i_n_d_a
-          var colors = ["rgb(242, 219, 215)", "rgb(230, 168, 183)", "rgb(237, \
-            185, 209)"];
+          var colors = ["rgb(224, 220, 250)", "rgb(232, \
+            221, 240)", "rgb(213, 213, 237)"];
           // Expressions for the faces
           var exprs = [happy_expr, excited_expr];
           // Keeps track of the colors for each face drawn onto the canvas
@@ -92,14 +92,14 @@
               // Giving the face a border
               ctx.lineWidth = 3;
               ctx.shadowBlur = 100;
-              ctx.shadowColor = "rgba(212, 89, 116,0.3)";
+              ctx.shadowColor = "rgba(245, 146, 93,0.1)";
               ctx.strokeStyle = ctx.shadowColor;
-//              ctx.strokeRect(0,0,30,30);
+              ctx.strokeRect(0,0,30,30);
 
               // Drawing the expression
               ctx.lineWidth = 1;
-              ctx.shadowBlur = 5;
-              ctx.shadowColor = "rgba(196, 102, 130,0.3)";
+              ctx.shadowBlur = 10;
+              ctx.shadowColor = "rgba(245, 146, 93,0.3)";
               ctx.stroke(expr);
               ctx.restore();
           }
@@ -132,10 +132,10 @@
                 // Determines if the face is to be changed
                 if (face_num == blink) {
                   faces_expr[face_num] = (faces_expr[face_num]+1)%exprs.length
+                  draw_face(i*40, j*40, colors[faces_color[face_num]], shape,
+                      exprs[faces_expr[face_num]]);
                 }
 
-                draw_face(i*40, j*40, colors[faces_color[face_num]], shape,
-                    exprs[faces_expr[face_num]]);
 
                 face_num += 1;
               }
