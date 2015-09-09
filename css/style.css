@@ -1,0 +1,6 @@
+#homepage {
+  position: relative;
+}
+#homepage canvas, #content {
+  position: absolute;
+}
