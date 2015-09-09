@@ -1,9 +1,13 @@
+<!-- Allows the #homepage:#console div to be place on top of the #homepage:canvas -->
 #homepage {
   position: relative;
 }
 #homepage canvas, #console {
   position: absolute;
 }
-#console #name {
-  position: absolute;
+#console {
+  background: rgb(224,224,224);
+  opacity: 0.7;
+  width: 75%;
+  margin: 0 auto;
 }
