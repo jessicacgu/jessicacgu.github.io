@@ -1,6 +1,9 @@
 #homepage {
   position: relative;
 }
-#homepage canvas, #content {
+#homepage canvas, #console {
+  position: absolute;
+}
+#console #name {
   position: absolute;
 }
