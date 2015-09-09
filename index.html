@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/style.css" type="text/style.css">
     <script type="application/javascript">
       // Draws faces onto all of the canvas. Puts 10px distance between each
       // face
@@ -19,7 +20,7 @@
 
           // Creating the shape of the face
           var shape = new Path2D();
-          shape.rect(0,0,30,30);
+          shape.rect(0,0,60,60);
 
           // colors are [lavendar, pink lavendar, gainsburo]
           var colors = ["rgb(224, 220, 250)", "rgb(232, \
@@ -27,9 +28,6 @@
           // Keeps track of the colors for each face drawn onto the canvas
           var faces_color = [];
 
-          // Scaling the faces by 2x. Adjusting for new number of faces on
-          // canvas
-          ctx.scale(2, 2);
           var num_width = Math.floor(canvas.width/80);
           var num_height = Math.floor(canvas.height/80);
 
@@ -61,7 +59,7 @@
               var c = Math.floor(Math.random()*100)%colors.length;
 
               // Draw the initial face on the canvas
-              draw_face(i*40,j*40, colors[c], shape);
+              draw_face(i*90,j*90, colors[c], shape);
 
               // Keeps track of each faces's color
               faces_color.push(c);
@@ -82,7 +80,7 @@
                 // Determines if the face is to be changed
                 if (face_num  % num_width ==  blink % num_width) {
                   faces_color[face_num] = (faces_color[face_num]+1)%colors.length
-                draw_face(i*40, j*40, colors[faces_color[face_num]], shape);
+                draw_face(i*90, j*90, colors[faces_color[face_num]], shape);
                 }
 
                 ctx.fillStyle = "rgb(88, 131, 163)";
@@ -101,6 +99,9 @@
     </script>
   </head>
   <body onload="draw_faces();">
+    <div id="homepage">
     <canvas id="faces_bkgd"></canvas>
+    <div id="content"></div>
+    </div>
   </body>
 </html>
